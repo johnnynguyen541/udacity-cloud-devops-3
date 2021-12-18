@@ -1,5 +1,7 @@
 ## Give your Application Auto-Deploy Superpowers
 
+NOTE: All deliverables are in the `submission/` directory
+
 In this project, you will prove your mastery of the following learning objectives:
 
 - Explain the fundamentals and benefits of CI/CD to achieve, build, and deploy automation for cloud-based software products.
@@ -45,14 +47,16 @@ For your submission, please submit the following:
 
 Before you submit your project, please check your work against the project rubric. If you haven’t satisfied each criterion in the rubric, then revise your work so that you have met all the requirements. 
 
-### Built With
+### Technologies Used
 
-- [Circle CI](www.circleci.com) - Cloud-based CI/CD service
 - [Amazon AWS](https://aws.amazon.com/) - Cloud services
-- [AWS CLI](https://aws.amazon.com/cli/) - Command-line tool for AWS
-- [CloudFormation](https://aws.amazon.com/cloudformation/) - Infrastrcuture as code
 - [Ansible](https://www.ansible.com/) - Configuration management tool
+- [AWS CLI](https://aws.amazon.com/cli/) - Command-line tool for AWS
+- [Circle CI](www.circleci.com) - Cloud-based CI/CD service
+- [CloudFormation](https://aws.amazon.com/cloudformation/) - Infrastrcuture as code
+- [Git](https://git-scm.com/) - Version Control
 - [Prometheus](https://prometheus.io/) - Monitoring tool
+- [Slack](https://slack.com/) - Alerts/Messaging
 
 ### License
 
