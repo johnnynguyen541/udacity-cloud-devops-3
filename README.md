@@ -1,6 +1,14 @@
-## Give your Application Auto-Deploy Superpowers
+# udacity-cloud-devops-3
 
-NOTE: All deliverables are in the `submission/` directory
+## Deliverables
+
+NOTE: All deliverables are in the `submission/` directory.  Access them here:
+* [SECTION #1: Selling CI/CD - "presentation.pdf"](submission/presentation.pdf)
+* [SECTION #2a: Deploying Working, Trustworthy Software - "urls.txt"](submission/urls.txt)
+* [SECTION #2b: Deploying Working, Trustworthy Software - Screenshots](submission/screenshots/README.md)
+* [SECTION #3: Turn Errors into Sirens - Screenshots](submission/screenshots/README.md)
+
+## Give your Application Auto-Deploy Superpowers
 
 In this project, you will prove your mastery of the following learning objectives:
 
