@@ -25,17 +25,30 @@ In this project, the objectives are as follows:
 * Shell [__Scripting Language__]
 
 ## Project Structure
-.
-├── .circleci # You will develop the files in this directory. 
-│   ├── ansible
-│   └── files
-├── backend  # Do not run npm commands here (on your local machine). 
-│   ├── src
-│   └── test
-├── frontend # Do not run npm commands here (on your local machine). 
-│   ├── src
-│   └── types
-└── util     # Files relevant for the running the app locally (Optional).
+
+`.circleci/`
+
+   └── files
+
+`backend/`  # Do not run npm commands here (on your local machine).
+
+   ├── src
+
+   └── test
+
+`docs/`  # Do not run npm commands here (on your local machine). 
+
+   ├── Portfolio.pdf    | PDF of  Section #1 (Selling CI/CD)
+
+   └── README.md        | README of Project Requirements
+
+`frontend/` # Do not run npm commands here (on your local machine). 
+
+   ├── src
+
+   └── types
+
+`util/`     # Files relevant for the running the app locally (Optional).
 
 ## Usage
 
