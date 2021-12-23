@@ -4,7 +4,7 @@ Normal Screenshots
 
   1. Job failed because of compile errors. [SCREENSHOT01](01-COMPILE-ERRORS.png)
   1. Job failed because of unit tests. [SCREENSHOT02](02-UNIT-TEST-ERRORS.png)
-  1. Job that failed because of vulnerable packages. [SCREENSHOT03]
+  1. Job that failed because of vulnerable packages. [SCREENSHOT03](03-SECURITY-FAIL.png)
   1. An alert from one of your failed builds. [SCREENSHOT04]
   1. Appropriate job failure for infrastructure creation. [SCREENSHOT05]
   1. Appropriate job failure for the smoke test job. [SCREENSHOT06]
