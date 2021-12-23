@@ -43,9 +43,9 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-test]
+          keys: [frontend-build]
       - run:
-          name: Frontend build
+          name: Frontend Unit Tests
           command: |
             # Your code here
             cd frontend
@@ -58,9 +58,9 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-test]
+          keys: [backend-build]
       - run:
-          name: Backend build
+          name: Backend Unit Tests
           command: |
             # Your code here
             cd backend
@@ -73,12 +73,14 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-scan]
+          keys: [frontend-build]
       - run:
-          cd frontend
-          npm install
-          # npm install oauth-sign@^0.9.0
-          npm audit --audit-level=critical
+          name: Frontend Security Scan
+          command: |
+            cd frontend
+            npm install
+            # npm install oauth-sign@^0.9.0
+            npm audit --audit-level=critical
 
   scan-backend:
     docker:
@@ -86,12 +88,14 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-scan]
+          keys: [backend-build]
       - run:
-          cd frontend
-          npm install
-          # npm install oauth-sign@^0.9.0
-          npm audit --audit-level=critical
+          name: Backend Security Scan
+          command: |
+            cd frontend
+            npm install
+            # npm install oauth-sign@^0.9.0
+            npm audit --audit-level=critical
 
 workflows:
   default:
