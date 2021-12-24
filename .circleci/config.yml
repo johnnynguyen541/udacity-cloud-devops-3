@@ -126,9 +126,6 @@ jobs:
             npm install
             npm audit fix --audit-level=critical --force
             npm audit --audit-level=critical
-      - run:
-          name: Force Fail
-          command: exit 1
       - on-fail-sequence
 
 workflows:
