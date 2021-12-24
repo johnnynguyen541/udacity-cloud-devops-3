@@ -1,5 +1,30 @@
 version: 2.1
-            
+
+orbs: 
+  slack: circleci/slack@4.5.1
+
+commands:
+
+  on-fail-sequence:
+    description: "Failure Sequence on Failed Build, Test, or Analyze Steps"
+    parameters:
+      id:
+        type: string
+        default: << pipeline.id >>
+      pull-url:
+        type: string
+        default: << pipeline.project.git_url >>
+    steps:
+      - run:
+          name: Slack Failure Echo Message
+          command: |
+            echo "Pipeline ID Failure: << parameters.id >>"
+            echo "Git Pull URL Failure: << parameters.pull-url >>"
+          when: on_fail
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+
 jobs:
   build-frontend:
     docker:
@@ -15,6 +40,7 @@ jobs:
             cd frontend
             npm install
             npm run build
+      - on-fail-sequence
       - save_cache:
           paths: [frontend/node_modules]
           key: frontend-build
@@ -33,6 +59,7 @@ jobs:
             cd backend
             npm install
             npm run build
+      - on-fail-sequence
       - save_cache:
           paths: [backend/node_modules]
           key: backend-build
@@ -51,6 +78,7 @@ jobs:
             cd frontend
             npm install
             npm run test
+      - on-fail-sequence
                 
   test-backend:
     docker:
@@ -66,6 +94,7 @@ jobs:
             cd backend
             npm install
             npm run test
+      - on-fail-sequence
 
   scan-frontend:
     docker:
@@ -81,6 +110,7 @@ jobs:
             npm install
             npm audit fix --audit-level=critical --force
             npm audit --audit-level=critical
+      - on-fail-sequence
 
   scan-backend:
     docker:
@@ -96,6 +126,7 @@ jobs:
             npm install
             npm audit fix --audit-level=critical --force
             npm audit --audit-level=critical
+      - on-fail-sequence
 
 workflows:
   default:
