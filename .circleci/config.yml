@@ -5,7 +5,7 @@ orbs:
 
 commands:
 
-  on-fail-sequence:
+  ci-on-fail:
     description: "Failure Sequence on Failed Build, Test, or Analyze Steps"
     parameters:
       id:
@@ -40,7 +40,7 @@ jobs:
             cd frontend
             npm install
             npm run build
-      - on-fail-sequence
+      - ci-on-fail
       - save_cache:
           paths: [frontend/node_modules]
           key: frontend-build
@@ -59,7 +59,7 @@ jobs:
             cd backend
             npm install
             npm run build
-      - on-fail-sequence
+      - ci-on-fail
       - save_cache:
           paths: [backend/node_modules]
           key: backend-build
@@ -78,7 +78,7 @@ jobs:
             cd frontend
             npm install
             npm run test
-      - on-fail-sequence
+      - ci-on-fail
                 
   test-backend:
     docker:
@@ -94,7 +94,7 @@ jobs:
             cd backend
             npm install
             npm run test
-      - on-fail-sequence
+      - ci-on-fail
 
   scan-frontend:
     docker:
@@ -110,7 +110,7 @@ jobs:
             npm install
             npm audit fix --audit-level=critical --force
             npm audit --audit-level=critical
-      - on-fail-sequence
+      - ci-on-fail
 
   scan-backend:
     docker:
@@ -126,7 +126,7 @@ jobs:
             npm install
             npm audit fix --audit-level=critical --force
             npm audit --audit-level=critical
-      - on-fail-sequence
+      - ci-on-fail
 
 workflows:
   default:
