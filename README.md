@@ -8,6 +8,13 @@ NOTE: All deliverables are in the `submission/` directory.  Access them here:
 * [SECTION #2b: Deploying Working, Trustworthy Software - Screenshots](submission/screenshots/README.md)
 * [SECTION #3: Turn Errors into Sirens - Screenshots](submission/screenshots/README.md)
 
+## AWS Notes
+
+| Object  | Information | URL/AWS ARN |
+| ------------- | ------------- | ------------- |
+| S3 Bucket  | udapeople-0snan982huahl | arn:aws:s3:::udapeople-0snan982huahl |
+| RDS PostgresSQL DB | udapeople-prod (User: postgres, Pass: 12345678) | udapeople-prod.cfv62zdlstng.us-west-2.rds.amazonaws.com |
+
 ## Give your Application Auto-Deploy Superpowers
 
 In this project, you will prove your mastery of the following learning objectives:
