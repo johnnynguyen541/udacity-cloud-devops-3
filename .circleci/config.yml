@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs: 
+
   slack: circleci/slack@4.5.1
 
 commands:
@@ -25,7 +26,21 @@ commands:
           event: fail
           template: basic_fail_1
 
+  destroy_environment:
+    steps:
+      - run:
+          name: Destroy Backend environment
+          when: on_fail
+          command: |
+            aws cloudformation delete-stack --stack-name udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}
+      - run:
+          name: Destroy Frontend environment
+          when: on_fail
+          command: |
+            aws cloudformation delete-stack --stack-name udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}
+
 jobs:
+
   build-frontend:
     docker:
       - image: circleci/node:13.8.0
@@ -128,6 +143,40 @@ jobs:
             npm audit --audit-level=critical
       - ci-on-fail
 
+  deploy-infrastructure:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+      # Checkout code from git
+      - checkout
+      - run:
+          name: Ensure back-end infrastructure exists
+          command: |
+            aws cloudformation deploy \
+              --template-file .circleci/files/backend.yml \
+              --tags project=udacity-3 \
+              --stack-name "udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}" \
+              --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"  
+      - run:
+          name: Ensure front-end infrastructure exist
+          command: |
+            aws cloudformation deploy \
+              --template-file .circleci/files/frontend.yml \
+              --tags project=udacity-3 \
+              --stack-name "udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}" \
+              --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"
+      - run:
+          name: Add back-end ip to ansible inventory
+          command: |
+            # Your code here
+            exit 1
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project/.circleci/ansible/inventory.txt
+      - destroy_environment
+      # Here's where you will add some code to rollback on failure  
+
 workflows:
   default:
     jobs:
@@ -151,3 +200,7 @@ workflows:
           context: slack-context
           requires:
             - test-backend
+      - deploy-infrastructure:
+          requires:
+            - scan-frontend
+            - scan-backend
