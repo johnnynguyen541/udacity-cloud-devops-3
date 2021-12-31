@@ -26,7 +26,7 @@ commands:
           event: fail
           template: basic_fail_1
 
-  destroy_environment:
+  destroy-environment-on-fail:
     steps:
       - run:
           name: Destroy Backend environment
@@ -180,8 +180,33 @@ jobs:
           root: ~/
           paths:
             - project/.circleci/ansible/inventory.txt
-      - destroy_environment
-      # Here's where you will add some code to rollback on failure  
+      - destroy-environment-on-fail
+
+  configure-infrastructure:
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            53:1c:24:8f:0b:33:e7:17:51:31:ff:96:0f:09:41:06
+      # attach workspace
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: "Move Workspace Over"
+          command: mv /tmp/workspace .
+      - run:
+          name: Install dependencies
+          command: |
+            # install the dependencies needed for your playbook
+            apk add --update tar gzip ansible awscli. 
+      - run:
+          name: Configure server
+          command: |
+            # Your code here
+            exit 1
+      - destroy-environment-on-fail 
 
 workflows:
   udapeople-ci-cd:
