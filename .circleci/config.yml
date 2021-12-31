@@ -200,13 +200,12 @@ jobs:
           name: Install dependencies
           command: |
             # install the dependencies needed for your playbook
-            apk add --update tar gzip ansible awscli. 
+            apk add --update tar gzip ansible awscli
       - run:
           name: Configure server
           command: |
             cd .circleci/ansible
             ansible-playbook -i inventory.txt configure-server.yml
-      - destroy-environment-on-fail 
 
 workflows:
   udapeople-ci-cd:

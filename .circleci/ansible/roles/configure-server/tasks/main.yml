@@ -1,0 +1,53 @@
+---
+
+
+- name: update apt packages.
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: upgrade packages
+  become: yes
+  apt:
+    upgrade: yes
+
+- name: remove unneeded dependencies
+  become: yes
+  apt:
+    autoremove: yes
+
+- name: "Install Python on Ubuntu Host for Ansible."
+  become: true
+  gather_facts: no
+  shell: |
+    #!/bin/bash
+    declare -A osInfo;
+    osInfo[/etc/debian_version]="apt"
+    osInfo[/etc/alpine-release]="apk"
+    osInfo[/etc/centos-release]="yum"
+    osInfo[/etc/fedora-release]="dnf"
+
+    for f in ${!osInfo[@]}
+    do
+        if [[ -f $f ]];then
+            package_manager=${osInfo[$f]}
+        fi
+    done
+
+    $package_manager install python3
+
+- name: install node
+  become: yes
+  apt:
+    name: ["nodejs", "npm"]
+    state: latest
+    update_cache: yes
+
+- name: install pm2
+  become: yes
+  npm:
+    name: pm2
+    global: yes
+    production: yes
+    state: present
+...
