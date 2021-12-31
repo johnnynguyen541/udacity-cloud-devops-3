@@ -174,7 +174,7 @@ jobs:
           command: |
             aws ec2 describe-instances \
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
-              --filters "Name=tag:Name,Values=backend-a1d5582" \
+              --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7}" \
               --output text 2>&1 | tee .circleci/ansible/inventory.txt
       - persist_to_workspace:
           root: ~/
@@ -204,8 +204,8 @@ jobs:
       - run:
           name: Configure server
           command: |
-            # Your code here
-            exit 1
+            cd .circleci/ansible
+            ansible-playbook -i inventory.txt configure-server.yml
       - destroy-environment-on-fail 
 
 workflows:
@@ -235,3 +235,6 @@ workflows:
           requires:
             - scan-frontend
             - scan-backend
+      - configure-infrastructure:
+          requires:
+            - deploy-infrastructure
