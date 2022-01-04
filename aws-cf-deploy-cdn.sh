@@ -20,7 +20,7 @@ Check_Kwargs_Count () {
   else
     printf "Incorrect number of parameters\n"
     printf "Usage: ./aws-cf-deploy-cdn.sh [STACK_NAME] [S3_BUCKET_ID]\n"
-    printf "Example: ./aws-cf-deploy-cdn.sh InitialStack udapeople-0snan982huahl\n"
+    printf "Example: ./aws-cf-deploy-cdn.sh udapeople-cloud-front udapeople-0snan982huahl\n"
     exit 1
   fi
 }

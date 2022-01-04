@@ -1,6 +1,4 @@
 ---
-
-
 - name: update apt packages.
   become: yes
   apt:
@@ -21,6 +19,7 @@
   gather_facts: no
   shell: |
     #!/bin/bash
+    # LINK: https://blog.knoldus.com/how-to-install-python-in-target-host-using-ansible/
     declare -A osInfo;
     osInfo[/etc/debian_version]="apt"
     osInfo[/etc/alpine-release]="apk"
