@@ -207,6 +207,24 @@ jobs:
             cd .circleci/ansible
             ansible-playbook -i inventory.txt configure-server.yml
 
+  debug-destroy-infra:  # Only for Debug purposes.  Disable when Not needed
+    docker:
+      - image: amazon/aws-cli
+    steps:
+      - checkout
+      - run: 
+          name: Install tar and gzip
+          command: |
+            yum install -y tar gzip
+      - run:
+          name: Auto Destroy Backend environment
+          command: |
+            aws cloudformation delete-stack --stack-name udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}
+      - run:
+          name: Auto Destroy Frontend environment
+          command: |
+            aws cloudformation delete-stack --stack-name udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}
+
 workflows:
   udapeople-ci-cd:
     jobs:
@@ -237,3 +255,6 @@ workflows:
       - configure-infrastructure:
           requires:
             - deploy-infrastructure
+      - debug-destroy-infra:  # Only for Debug purposes
+          requires:
+            - configure-infrastructure
