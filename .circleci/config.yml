@@ -184,7 +184,7 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - image: python:3.7-alpine3.11
+      - image: cimg/base:stable-20.04
     steps:
       - checkout
       - add_ssh_keys:
@@ -197,10 +197,15 @@ jobs:
           name: "Move Workspace Over"
           command: mv /tmp/workspace .
       - run:
+          name: Update Apt
+          command: |
+            # install the dependencies needed for your playbook
+            apt update
+      - run:
           name: Install dependencies
           command: |
             # install the dependencies needed for your playbook
-            apk add --update tar gzip ansible awscli
+            apt install -y tar gzip ansible awscli
       - run:
           name: Configure server
           command: |
