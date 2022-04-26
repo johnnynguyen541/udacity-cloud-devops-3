@@ -200,12 +200,12 @@ jobs:
           name: Update Apt
           command: |
             # install the dependencies needed for your playbook
-            apt update
+            sudo apt update
       - run:
           name: Install dependencies
           command: |
             # install the dependencies needed for your playbook
-            apt install -y tar gzip ansible awscli
+            sudo apt -y install tar gzip ansible awscli
       - run:
           name: Configure server
           command: |
