@@ -172,11 +172,11 @@ jobs:
       - run:
           name: Add back-end ip to ansible inventory
           command: |
-            echo "[all]" 2>&1 | tee .circleci/ansible/inventory.txt
+            echo "[all]" 2>&1 | tee -a .circleci/ansible/inventory.txt
             aws ec2 describe-instances \
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7}" \
-              --output text 2>&1 | tee .circleci/ansible/inventory.txt
+              --output text 2>&1 | tee -a  .circleci/ansible/inventory.txt
       - persist_to_workspace:
           root: ~/
           paths:
@@ -206,11 +206,14 @@ jobs:
           name: Install dependencies
           command: |
             # install the dependencies needed for your playbook
-            sudo apt -y install tar gzip ansible awscli
+            sudo apt -y install tar gzip ansible awscli tree
       - run:
           name: Configure server
           command: |
             cd .circleci/ansible
+            echo "DEBUG"
+            pwd
+            tree
             cat inventory.txt
             ansible-playbook -i inventory.txt configure-server.yml
 
