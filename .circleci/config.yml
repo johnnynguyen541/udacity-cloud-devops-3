@@ -199,7 +199,7 @@ jobs:
       - run:
           name: Update Apt
           command: |
-            # install the dependencies needed for your playbook
+            # Update Apt
             sudo apt update
       - run:
           name: Install dependencies
