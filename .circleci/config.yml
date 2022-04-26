@@ -195,6 +195,15 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run:
+          name: "DEBUG - Get PWD"
+          command: pwd
+      - run:
+          name: "DEBUG - List workspace"
+          command: ls -l /tmp/workspace
+      - run:
+          name: "DEBUG - List inventory"
+          command: cat /tmp/workspace/inventory.txt
+      - run:
           name: "Move Workspace Over"
           command: mv /tmp/workspace .
       - run:
