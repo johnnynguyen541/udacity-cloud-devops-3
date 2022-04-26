@@ -205,7 +205,7 @@ jobs:
           command: cat /tmp/workspace/project/.circleci/ansible/inventory.txt
       - run:
           name: "Move Workspace Over"
-          command: mv /tmp/workspace .circleci/ansible/.
+          command: mv /tmp/workspace/project/.circleci/ansible/inventory.txt .circleci/ansible/.
       - run:
           name: Update Apt
           command: |
