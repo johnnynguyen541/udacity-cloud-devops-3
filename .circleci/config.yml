@@ -202,10 +202,10 @@ jobs:
           command: ls -l /tmp/workspace
       - run:
           name: "DEBUG - List inventory"
-          command: cat /tmp/workspace/inventory.txt
+          command: cat /tmp/workspace/project/.circleci/ansible/inventory.txt
       - run:
           name: "Move Workspace Over"
-          command: mv /tmp/workspace .
+          command: mv /tmp/workspace .circleci/ansible/.
       - run:
           name: Update Apt
           command: |
