@@ -363,7 +363,7 @@ workflows:
       - deploy-backend:
           requires:
             - run-migrations
-      - debug-destroy-infra:  # Only for Debug purposes
-          requires:
-            - deploy-frontend
-            - deploy-backend
+      #- debug-destroy-infra:  # Only for Debug purposes
+      #    requires:
+      #      - deploy-frontend
+      #      - deploy-backend
