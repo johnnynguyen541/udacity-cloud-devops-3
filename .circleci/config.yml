@@ -30,6 +30,7 @@ commands:
     steps:
       - run:
           name: Install AWS CLI
+          when: on_fail
           command: |
             # install the dependencies needed for your playbook
             sudo apt -y install awscli 
