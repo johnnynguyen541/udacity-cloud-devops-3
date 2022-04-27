@@ -250,6 +250,7 @@ jobs:
   deploy-frontend:
     docker:
       # Docker image here that supports AWS CLI
+      - image: amazon/aws-cli
     steps:
       # Checkout code from git
       - run:
@@ -271,6 +272,7 @@ jobs:
   deploy-backend:
     docker:
       # Docker image here that supports Ansible
+      - image: cimg/base:stable-20.04
     steps:
       # Checkout code from git
       # Add ssh keys with fingerprint
