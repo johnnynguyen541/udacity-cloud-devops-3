@@ -15,8 +15,7 @@
     autoremove: yes
 
 - name: "Install Python on Ubuntu Host for Ansible."
-  become: true
-  gather_facts: no
+  become: yes
   shell: |
     #!/bin/bash
     # LINK: https://blog.knoldus.com/how-to-install-python-in-target-host-using-ansible/
@@ -34,6 +33,8 @@
     done
 
     $package_manager install python3
+  args:
+    executable: /bin/bash
 
 - name: install node
   become: yes

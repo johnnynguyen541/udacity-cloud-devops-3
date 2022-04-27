@@ -172,7 +172,7 @@ jobs:
       - run:
           name: Add back-end ip to ansible inventory
           command: |
-            echo "[all]" 2>&1 | tee -a .circleci/ansible/inventory.txt
+            echo "[web]" 2>&1 | tee -a .circleci/ansible/inventory.txt
             aws ec2 describe-instances \
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7}" \
@@ -190,19 +190,10 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            53:1c:24:8f:0b:33:e7:17:51:31:ff:96:0f:09:41:06
+            fc:8d:e5:1b:dc:e4:76:86:6d:93:e9:b8:42:c2:04:fa
       # attach workspace
       - attach_workspace:
           at: /tmp/workspace
-      - run:
-          name: "DEBUG - Get PWD"
-          command: pwd
-      - run:
-          name: "DEBUG - List workspace"
-          command: ls -l /tmp/workspace
-      - run:
-          name: "DEBUG - List inventory"
-          command: cat /tmp/workspace/project/.circleci/ansible/inventory.txt
       - run:
           name: "Move Workspace Over"
           command: mv /tmp/workspace/project/.circleci/ansible/inventory.txt .circleci/ansible/.
@@ -220,10 +211,6 @@ jobs:
           name: Configure server
           command: |
             cd .circleci/ansible
-            echo "DEBUG"
-            pwd
-            tree
-            cat inventory.txt
             ansible-playbook -i inventory.txt configure-server.yml
 
   debug-destroy-infra:  # Only for Debug purposes.  Disable when Not needed
