@@ -33,6 +33,7 @@ commands:
           when: on_fail
           command: |
             # install the dependencies needed for your playbook
+            sudo apt update
             sudo apt -y install awscli 
       - run:
           name: Destroy Backend environment
@@ -246,7 +247,7 @@ jobs:
                 curl -H "Content-Type: text/plain" -H "token: 7933fe63-4687-4fa1-8426-aa25aa1730ec" --request PUT --data "1" https://api.memstash.io/values/migration_${CIRCLE_WORKFLOW_ID:0:7}
             fi
       # Here's where you will add some code to rollback on failure   
-      # - destroy-environment-on-fail
+      - destroy-environment-on-fail
   
   deploy-frontend:
     docker:
