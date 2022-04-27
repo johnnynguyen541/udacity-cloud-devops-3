@@ -1,21 +1,32 @@
 ---
+- name: creates directory for backend
+  file:
+    path:  backend/
+    state: directory
+
 - name: Extract artifact.tar.gz into /home/ubuntu
   unarchive:
     src:  artifact.tar.gz
-    dest: /home/ubuntu
+    dest: /home/ubuntu/backend
 
 - name: npm install
   command: npm install
   args:
-    chdir: /home/ubuntu
+    chdir: /home/ubuntu/backend
 
 - name: pm2 stop default
   command: pm2 stop default
+  ignore_errors: yes
   args:
-    chdir: /home/ubuntu
+    chdir: /home/ubuntu/backend
 
 - name: pm2 start npm -- start
   command: pm2 start npm -- start
   args:
-    chdir: /home/ubuntu
+    chdir: /home/ubuntu/backend
+
+- name: pm2 start main.js
+  command: pm2 start main.js --update-env
+  args:
+    chdir: /home/ubuntu/backend/dist
 ...
