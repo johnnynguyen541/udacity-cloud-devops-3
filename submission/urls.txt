@@ -1,1 +1,2 @@
 URL01 [Public Url to GitHub repository (not private)] - https://github.com/johnnynguyen541/udacity-cloud-devops-3
+URL02 [Public URL for your S3 Bucket (Front End)] - # TODO

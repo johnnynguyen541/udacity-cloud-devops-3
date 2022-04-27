@@ -293,17 +293,39 @@ jobs:
       - image: cimg/base:stable-20.04
     steps:
       # Checkout code from git
+      - checkout
       # Add ssh keys with fingerprint
+      - add_ssh_keys:
+          fingerprints:
+            fc:8d:e5:1b:dc:e4:76:86:6d:93:e9:b8:42:c2:04:fa
       # attach workspace
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: "Move Workspace Over"
+          command: mv /tmp/workspace/project/.circleci/ansible/inventory.txt .circleci/ansible/.
       - run:
           name: Install dependencies
           command: |
-            # your code here
+            sudo apt update
+            curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+            sudo apt -y install tar gzip ansible nodejs
       - run:
           name: Deploy backend
           command: |
             # your code here
-      # Here's where you will add some code to rollback on failure  
+            cd backend
+            npm i
+            npm run build
+            cd ..
+            # Zip the directory
+            tar -C backend -czvf artifact.tar.gz .
+            cd .circleci/ansible
+            echo "Contents  of the inventory.txt file is -------"
+            cat inventory.txt
+            ansible-playbook -i inventory.txt deploy-backend.yml
+      # Here's where you will add some code to rollback on failure
+      # å- destroy-environment-on-fail  
 
   # Only for Debug purposes.  Disable when Not needed
   debug-destroy-infra:  
