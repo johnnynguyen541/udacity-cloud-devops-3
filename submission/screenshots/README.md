@@ -7,8 +7,8 @@ Normal Screenshots
   1. Job that failed because of vulnerable packages. [SCREENSHOT03](03-SECURITY-FAIL.png)
   1. An alert from one of your failed builds. [SCREENSHOT04](04-EMAIL-SLACK-FAIL.png)
   1. Appropriate job failure for infrastructure creation. [SCREENSHOT05](05-INFRASTRUCTURE-FAIL.png)
-  1. Appropriate job failure for the smoke test job. [SCREENSHOT06]
-  1. Successful rollback after a failed smoke test. [SCREENSHOT07]  
+  1. Appropriate job failure for the smoke test job. [SCREENSHOT06](06-SMOKE-TEST-FAIL.png)
+  1. Successful rollback after a failed smoke test. [SCREENSHOT07](07-ROLLBACK.png)
   1. Successful promotion job. [SCREENSHOT08]
   1. Successful cleanup job. [SCREENSHOT09]
   1. Only deploy on pushed to `master` branch. [SCREENSHOT10]
