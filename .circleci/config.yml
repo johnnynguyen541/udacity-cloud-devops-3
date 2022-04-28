@@ -406,7 +406,7 @@ jobs:
             echo "$BACKEND_IP"
       - run:
           name: Backend smoke test.
-          command: |)
+          command: |
             export API_URL="http://${BACKEND_IP}:3030"
             echo "${API_URL}"
             if curl -s https://${BACKEND_URL}:3030/api/status
