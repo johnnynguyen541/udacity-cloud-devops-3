@@ -516,6 +516,10 @@ jobs:
       - run:
           name: Remove old stacks and files
           command: |
+            export OLD_WORKFLOW_ID=$(cat OLD_WORKFLOW_ID.txt)
+            echo OLD_WORKFLOW_ID: "${OLD_WORKFLOW_ID}"
+            echo "s3://udapeople-${OLD_WORKFLOW_ID}"
+
             if [[ "${STACKS[@]}" =~ "${OLD_WORKFLOW_ID}" ]]
             then
               aws s3 rm "s3://udapeople-${OLD_WORKFLOW_ID}" --recursive
