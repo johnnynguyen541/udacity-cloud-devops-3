@@ -520,7 +520,7 @@ jobs:
             echo OLD_WORKFLOW_ID: "${OLD_WORKFLOW_ID}"
             echo "s3://udapeople-${OLD_WORKFLOW_ID}"
 
-            if [[ "${CIRCLE_WORKFLOW_ID:0:7}" =~ "${OLD_WORKFLOW_ID}" ]]
+            if [[ "${CIRCLE_WORKFLOW_ID:0:7}" != "${OLD_WORKFLOW_ID}" ]]
             then
               echo "------ DELETING ------ "
               aws s3 rm "s3://udapeople-${OLD_WORKFLOW_ID}" --recursive
