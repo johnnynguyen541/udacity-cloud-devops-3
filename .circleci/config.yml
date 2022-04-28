@@ -198,6 +198,12 @@ jobs:
           command: |
             yum install -y tar gzip
       - run:
+          name: Store Old Workflow ID in advance
+          command: |
+            aws cloudformation list-exports \
+              --query "Exports[?Name==\`WorkflowID\`].Value" \
+              --no-paginate --output text | cut -f 2 -d '-' > ~/OLD_WORKFLOW_ID.txt
+      - run:
           name: Ensure back-end infrastructure exists
           command: |
             aws cloudformation deploy \
@@ -225,6 +231,7 @@ jobs:
           root: ~/
           paths:
             - project/.circleci/ansible/inventory.txt
+            - OLD_WORKFLOW_ID.txt
       - destroy-environment :
           workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
 
@@ -481,9 +488,7 @@ jobs:
           name: Get old stack workflow id
           command: |
             # your code here
-            export OLD_WORKFLOW_ID=$(aws cloudformation \
-              list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
-              --no-paginate --output text | cut -f 2 -d '-')
+            export OLD_WORKFLOW_ID=$(cat OLD_WORKFLOW_ID.txt)
             echo OLD_WORKFLOW_ID: "${OLD_WORKFLOW_ID}"
             echo CIRCLE_WORKFLOW_ID: "${CIRCLE_WORKFLOW_ID:0:7}"
 
