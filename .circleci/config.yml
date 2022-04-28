@@ -203,6 +203,7 @@ jobs:
             aws cloudformation list-exports \
               --query "Exports[?Name==\`WorkflowID\`].Value" \
               --no-paginate --output text | cut -f 2 -d '-' > ~/OLD_WORKFLOW_ID.txt
+            cat ~/OLD_WORKFLOW_ID.txt
       - run:
           name: Ensure back-end infrastructure exists
           command: |
@@ -484,6 +485,11 @@ jobs:
     steps:
       # Checkout code from git
       - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: "Move Workspace Over"
+          command: mv /tmp/workspace/OLD_WORKFLOW_ID.txt .
       - run:
           name: Get old stack workflow id
           command: |
