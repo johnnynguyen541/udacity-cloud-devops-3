@@ -528,7 +528,7 @@ jobs:
               aws cloudformation delete-stack --stack-name "udapeople-backend-${OLD_WORKFLOW_ID}"
               aws cloudformation delete-stack --stack-name "udapeople-frontend-${OLD_WORKFLOW_ID}"
             else
-              echo "------ Cannot Cleanup ------ "
+              echo "------ CANNOT CLEANUP ------ "
             fi
 
 workflows:
