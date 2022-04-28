@@ -518,6 +518,7 @@ jobs:
           command: |
             export OLD_WORKFLOW_ID=$(cat OLD_WORKFLOW_ID.txt)
             echo OLD_WORKFLOW_ID: "${OLD_WORKFLOW_ID}"
+            echo CIRCLE_WORKFLOW_ID: "${CIRCLE_WORKFLOW_ID:0:7}"
             echo "s3://udapeople-${OLD_WORKFLOW_ID}"
 
             if [[ "${CIRCLE_WORKFLOW_ID:0:7}" != "${OLD_WORKFLOW_ID}" ]]
