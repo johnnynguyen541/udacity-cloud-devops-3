@@ -483,7 +483,7 @@ jobs:
             # your code here
             export OLD_WORKFLOW_ID=$(aws cloudformation \
               list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
-              --no-paginate --output text)
+              --no-paginate --output text | cut -f 2 -d '-')
             echo OLD_WORKFLOW_ID: "${OLD_WORKFLOW_ID}"
             echo CIRCLE_WORKFLOW_ID: "${CIRCLE_WORKFLOW_ID:0:7}"
 
@@ -497,7 +497,7 @@ jobs:
           command: |
             if [[ "${STACKS[@]}" =~ "${OLD_WORKFLOW_ID}" ]]
             then
-              aws s3 rm "s3://udapeople-${OLD_WORKFLOW_ID}" --recursive
+              aws s3 rm "s3://08udapeople-${OLD_WORKFLOW_ID}" --recursive
               aws cloudformation delete-stack --stack-name "udapeople-backend-${OLD_WORKFLOW_ID}"
               aws cloudformation delete-stack --stack-name "udapeople-frontend-${OLD_WORKFLOW_ID}"
             fi
