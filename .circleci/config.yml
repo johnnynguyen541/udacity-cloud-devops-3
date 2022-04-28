@@ -481,12 +481,22 @@ jobs:
 
   cleanup:
     docker:
-      - image: amazon/aws-cli
+      - image: cimg/base:stable-20.04
     steps:
       # Checkout code from git
       - checkout
       - attach_workspace:
           at: /tmp/workspace
+      - run:
+          name: Update Apt
+          command: |
+            # Update Apt
+            sudo apt update
+      - run:
+          name: Install dependencies
+          command: |
+            # install the dependencies needed for your playbook
+            sudo apt -y install tar gzip awscli
       - run:
           name: "Move Workspace Over"
           command: mv /tmp/workspace/OLD_WORKFLOW_ID.txt .
