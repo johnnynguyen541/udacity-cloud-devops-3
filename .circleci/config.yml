@@ -520,11 +520,14 @@ jobs:
             echo OLD_WORKFLOW_ID: "${OLD_WORKFLOW_ID}"
             echo "s3://udapeople-${OLD_WORKFLOW_ID}"
 
-            if [[ "${STACKS[@]}" =~ "${OLD_WORKFLOW_ID}" ]]
+            if [[ "${CIRCLE_WORKFLOW_ID:0:7}" =~ "${OLD_WORKFLOW_ID}" ]]
             then
+              echo "------ DELETING ------ "
               aws s3 rm "s3://udapeople-${OLD_WORKFLOW_ID}" --recursive
               aws cloudformation delete-stack --stack-name "udapeople-backend-${OLD_WORKFLOW_ID}"
               aws cloudformation delete-stack --stack-name "udapeople-frontend-${OLD_WORKFLOW_ID}"
+            else
+              echo "------ Cannot Cleanup ------ "
             fi
 
 workflows:

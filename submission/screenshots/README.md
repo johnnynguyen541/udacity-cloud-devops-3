@@ -10,7 +10,7 @@ Normal Screenshots
   1. Appropriate job failure for the smoke test job. [SCREENSHOT06](06-SMOKE-TEST-FAIL.png)
   1. Successful rollback after a failed smoke test. [SCREENSHOT07](07-ROLLBACK.png)
   1. Successful promotion job. [SCREENSHOT08](08-SUCCESSFUL-CLOUDFRONT-PROMOTION.png)
-  1. Successful cleanup job. [SCREENSHOT09]
+  1. Successful cleanup job. [SCREENSHOT09](09-CLEANUP.png)
   1. Only deploy on pushed to `master` branch. [SCREENSHOT10](10-ONLY-DEPLOY-MASTER.png)
   1. Provide a screenshot of a graph of your EC2 instance including available memory, available disk space, and CPU usage. [SCREENSHOT11]
   1. Provide a screenshot of an alert that was sent by Prometheus. [SCREENSHOT12]
