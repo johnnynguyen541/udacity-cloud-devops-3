@@ -534,7 +534,7 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - main 
       - configure-infrastructure:
           requires:
             - deploy-infrastructure
