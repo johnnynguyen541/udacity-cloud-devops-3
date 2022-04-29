@@ -1,2 +1,4 @@
-URL01 [Public Url to GitHub repository (not private)] - https://github.com/johnnynguyen541/udacity-cloud-devops-3
-# TODO URL02 [Public URL for your S3 Bucket (Front End)] - http://udapeople-6099835.s3-website-us-west-2.amazonaws.com
+URL01 [Public URL to GitHub repository (not private)] - https://github.com/johnnynguyen541/udacity-cloud-devops-3
+#URL02 [Public URL for your S3 Bucket (Front End)] - http://udapeople-bbed8d0.s3-website-us-west-2.amazonaws.com/#/employees
+#URL03 [Public URL to CloudFront (Front End)] - http://d34rg8wsqe57yz.cloudfront.net
+#URL04 [Backend URL API Status] - http://52.42.246.218:3030/api/status

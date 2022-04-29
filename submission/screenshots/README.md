@@ -18,7 +18,7 @@ Normal Screenshots
 URL Screenshots
 
   1. A public git repository with your project code. [URL01_SCREENSHOT](URL01-GITHUB-PUBLIC-REPO.png)
-  1. Evidence of deployed and functioning front-end application in an S3 bucket [URL02_SCREENSHOT].
-  1. Evidence of deployed and functioning front-end application in CloudFront. [URL03_SCREENSHOT]
-  1. Evidence of healthy back-end application. [URL04_SCREENSHOT]
+  1. Evidence of deployed and functioning front-end application in an S3 bucket [URL02_SCREENSHOT](URL02-S3-FRONTEND.png).
+  1. Evidence of deployed and functioning front-end application in CloudFront. [URL03_SCREENSHOT](URL03-CLOUDFRONT-URL.png)
+  1. Evidence of healthy back-end application. [URL04_SCREENSHOT](URL04-BACKEND-HEALTH.png)
   1. Evidence of Prometheus Server. [URL05_SCREENSHOT]
