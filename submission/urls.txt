@@ -1,4 +1,5 @@
 URL01 [Public URL to GitHub repository (not private)] - https://github.com/johnnynguyen541/udacity-cloud-devops-3
-#URL02 [Public URL for your S3 Bucket (Front End)] - http://udapeople-bbed8d0.s3-website-us-west-2.amazonaws.com/#/employees
-#URL03 [Public URL to CloudFront (Front End)] - http://d34rg8wsqe57yz.cloudfront.net
-#URL04 [Backend URL API Status] - http://52.42.246.218:3030/api/status
+URL02 [Public URL for your S3 Bucket (Front End)] - http://udapeople-511c2b2.s3-website-us-west-2.amazonaws.com/#/employees
+URL03 [Public URL to CloudFront (Front End)] - http://d34rg8wsqe57yz.cloudfront.net
+URL04 [Backend URL API Status] - http://34.221.115.87:3030/api/status
+URL05 [Prometheus Server State] - http://35.88.88.112:9090/targets

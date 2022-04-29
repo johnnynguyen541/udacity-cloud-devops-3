@@ -13,7 +13,7 @@ Normal Screenshots
   1. Successful cleanup job. [SCREENSHOT09](09-CLEANUP.png)
   1. Only deploy on pushed to `master` branch. [SCREENSHOT10](10-ONLY-DEPLOY-MASTER.png)
   1. Provide a screenshot of a graph of your EC2 instance including available memory, available disk space, and CPU usage. [SCREENSHOT11]
-  1. Provide a screenshot of an alert that was sent by Prometheus. [SCREENSHOT12]
+  1. Provide a screenshot of an alert that was sent by Prometheus. [SCREENSHOT12](12-PROMETHEUS-EMAIL-ALERT.png)
 
 URL Screenshots
 
@@ -21,4 +21,4 @@ URL Screenshots
   1. Evidence of deployed and functioning front-end application in an S3 bucket [URL02_SCREENSHOT](URL02-S3-FRONTEND.png).
   1. Evidence of deployed and functioning front-end application in CloudFront. [URL03_SCREENSHOT](URL03-CLOUDFRONT-URL.png)
   1. Evidence of healthy back-end application. [URL04_SCREENSHOT](URL04-BACKEND-HEALTH.png)
-  1. Evidence of Prometheus Server. [URL05_SCREENSHOT]
+  1. Evidence of Prometheus Server. [URL05_SCREENSHOT](URL05-PROMETHEUS-SERVER.png)
