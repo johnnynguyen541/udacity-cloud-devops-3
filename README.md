@@ -1,30 +1,5 @@
 # udacity-cloud-devops-3
 
-## Deliverables
-
-NOTE: All deliverables are in the `submission/` directory.  Access them here:
-* [SECTION #1: Selling CI/CD - "presentation.pdf"](submission/presentation.pdf)
-* [SECTION #2a: Deploying Working, Trustworthy Software - "urls.txt"](submission/urls.txt)
-* [SECTION #2b: Deploying Working, Trustworthy Software - Screenshots](submission/screenshots/README.md)
-* [SECTION #3: Turn Errors into Sirens - Screenshots](submission/screenshots/README.md)
-
-## AWS Entity Notes
-
-| Object  | Information | URL/AWS ARN |
-| ------------- | ------------- | ------------- |
-| S3 Bucket  | udapeople-0snan982huahl | arn:aws:s3:::udapeople-0snan982huahl |
-| RDS PostgresSQL DB | udapeople-prod (User: postgres, Pass: 12345678) | udapeople-prod.cfv62zdlstng.us-west-2.rds.amazonaws.com |
-
-## Commands/Scripts
-
-__Connect to psql DB__
-
-sudo psql -h udapeople-prod.cfv62zdlstng.us-west-2.rds.amazonaws.com -p 5432 -d udapeople_prod -U postgres -W
-
-__Get AWS Stack Events__
-
-aws cloudformation describe-stack-events --stack-name udapeople-backend-4461193
-
 ## Give your Application Auto-Deploy Superpowers
 
 In this project, you will prove your mastery of the following learning objectives:
@@ -82,6 +57,33 @@ Before you submit your project, please check your work against the project rubri
 - [Git](https://git-scm.com/) - Version Control
 - [Prometheus](https://prometheus.io/) - Monitoring tool
 - [Slack](https://slack.com/) - Alerts/Messaging
+
+
+## Deliverables
+
+NOTE: All deliverables are in the `submission/` directory.  Access them here:
+* [SECTION #1: Selling CI/CD - "presentation.pdf"](submission/presentation.pdf)
+* [SECTION #2a: Deploying Working, Trustworthy Software - "urls.txt"](submission/urls.txt)
+* [SECTION #2b: Deploying Working, Trustworthy Software - Screenshots](submission/screenshots/README.md)
+* [SECTION #3: Turn Errors into Sirens - Screenshots](submission/screenshots/README.md)
+
+## AWS Entity Notes
+
+| Object  | Information | URL/AWS ARN |
+| ------------- | ------------- | ------------- |
+| S3 Bucket  | udapeople-0snan982huahl | arn:aws:s3:::udapeople-0snan982huahl |
+| RDS PostgresSQL DB | udapeople-prod (User: postgres, Pass: 12345678) | udapeople-prod.cfv62zdlstng.us-west-2.rds.amazonaws.com |
+
+## Commands/Scripts
+
+__Connect to psql DB__
+
+sudo psql -h udapeople-prod.cfv62zdlstng.us-west-2.rds.amazonaws.com -p 5432 -d udapeople_prod -U postgres -W
+
+__Get AWS Stack Events__
+
+aws cloudformation describe-stack-events --stack-name udapeople-backend-4461193
+
 
 ### License
 
